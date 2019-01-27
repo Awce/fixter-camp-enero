@@ -14,6 +14,14 @@ router.get("/", (req, res) => {
   })
 })
 
+
+router.get("/:id", (req, res) => {
+  Movie.findById(req.params.id)
+  .then(movie => {
+    res.render("detail", {movie})
+  })
+})
+
 router.post("/", (req, res) => {
   // crear pelicula
   Movie.create(req.body)

@@ -1,0 +1,21 @@
+div
+  h1=movie.title
+  img(src=`${movie.img}` alt=`${movie.title}`)
+  p=movie.description
+  p=movie.duration
+
+div
+  form(action="/movies/" method="POST")
+    div
+      label Title
+        input(type="text" name="title")
+    div
+      label Image:
+        input(type="text" name="img")
+    div
+      label Description:
+        textarea(name="description", cols="30", rows="10")
+    div
+      label Duration:
+        input(type="number", name="duration")
+    button(type="submit") picale
