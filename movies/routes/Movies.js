@@ -32,6 +32,13 @@ router.post("/", (req, res) => {
 
 })
 
+router.post("/:id/update", (req, res) => {
+  Movie.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
+    .then(movie => {
+      res.redirect(`/movies/${movie._id}`)
+    })
+})
+
 router.post("/:id", (req, res) => {
   Movie.findByIdAndDelete(req.params.id)
   .then(movie => {

@@ -5,17 +5,17 @@ div
   p=movie.duration
 
 div
-  form(action="/movies/" method="POST")
+  form(action=`/movies/${movie._id}/update` method="POST")
     div
       label Title
-        input(type="text" name="title")
+        input(type="text" name="title" value=movie.title) 
     div
       label Image:
-        input(type="text" name="img")
+        input(type="text" name="img" value=movie.img)
     div
       label Description:
-        textarea(name="description", cols="30", rows="10")
+        textarea(name="description", cols="30", rows="10")= movie.description
     div
       label Duration:
-        input(type="number", name="duration")
+        input(type="number", name="duration" value=movie.duration)
     button(type="submit") picale
