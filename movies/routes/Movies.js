@@ -8,11 +8,11 @@ router.get("/new", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-
-  Movie.create(req.body)
+  console.log(req.body);
+  /*Movie.create(req.body)
     .then( movie => {
       console.log(movie);
-    })
+    })*/
 
 })
 
