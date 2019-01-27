@@ -7,13 +7,28 @@ router.get("/new", (req, res) => {
   res.render("form");
 })
 
-router.post("/", (req, res) => {
-  console.log(req.body);
-  /*Movie.create(req.body)
-    .then( movie => {
-      console.log(movie);
-    })*/
+router.get("/", (req, res) => {
+  Movie.find()
+  .then(movies => {
+    res.render("list", {movies});
+  })
+})
 
+router.post("/", (req, res) => {
+  // crear pelicula
+  Movie.create(req.body)
+    .then( movie => {
+      // si la creo correctamente mando a /movies/
+      res.redirect("/movies/");
+    })
+
+})
+
+router.post("/:id", (req, res) => {
+  Movie.findByIdAndDelete(req.params.id)
+  .then(movie => {
+    res.redirect("/movies/")
+  })
 })
 
 module.exports = router;
